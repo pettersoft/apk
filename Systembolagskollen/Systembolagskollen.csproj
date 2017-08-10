@@ -175,6 +175,7 @@
     <None Include="Resources\Logs.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dll\AlertHelper.dll" />
     <Content Include="succeikon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
