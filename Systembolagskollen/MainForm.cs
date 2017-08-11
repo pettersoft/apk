@@ -49,7 +49,6 @@ namespace Systembolagskollen
             SetDataSource();
             SetAlcoholTypes();
             RefreshDataSource();
-            lblAmountOfArticles.Text = $"{_amountOfArticles} artiklar";
             tsLblAmountOfArticles.Text = $"Antal artiklar: {_amountOfArticles}";
         }
 

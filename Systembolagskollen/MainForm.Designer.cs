@@ -277,9 +277,9 @@
             // gBoxInformation
             // 
             this.gBoxInformation.Controls.Add(this.label1);
-            this.gBoxInformation.Location = new System.Drawing.Point(11, 289);
+            this.gBoxInformation.Location = new System.Drawing.Point(11, 356);
             this.gBoxInformation.Name = "gBoxInformation";
-            this.gBoxInformation.Size = new System.Drawing.Size(366, 165);
+            this.gBoxInformation.Size = new System.Drawing.Size(366, 98);
             this.gBoxInformation.TabIndex = 22;
             this.gBoxInformation.TabStop = false;
             this.gBoxInformation.Text = "Tips och information";
@@ -368,7 +368,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(135, 227);
+            this.btnClear.Location = new System.Drawing.Point(135, 222);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 56);
             this.btnClear.TabIndex = 13;
@@ -378,7 +378,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(237, 227);
+            this.btnSearch.Location = new System.Drawing.Point(236, 222);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 56);
             this.btnSearch.TabIndex = 12;
