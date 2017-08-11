@@ -137,14 +137,10 @@ namespace Systembolagskollen
         private void SetPage(bool goForward)
         {
             if (goForward && _currentPage < (_totalPages-1))
-            {
                 _currentPage++;
-            }
 
             if (!goForward && _currentPage > 0)
-            {
                 _currentPage--;
-            }
 
             RefreshDataSource();
         }

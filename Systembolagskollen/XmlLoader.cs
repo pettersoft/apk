@@ -29,8 +29,16 @@ namespace Systembolagskollen
                 return article;
             } catch (Exception e)
             {
+                var errorInformation = e.GetBaseException();
+
+                if (errorInformation.Source.ToLower() == "system.xml")
+                {
+                    AlertHelper.AlertHelper.Alert("Ett fel uppstod vid läsning av XML-filen. Uppdatera sortimentet för att låsa problemet.");
+                    File.Delete("sortiment.xml");
+                }
+
                 Logger.Write(e);
-                throw;
+                return null;
             }
         }
     }
