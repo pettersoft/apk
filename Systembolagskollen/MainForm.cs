@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Systembolaget.DataObjects;
 using Systembolagskollen.DataObjects;
@@ -16,10 +15,11 @@ namespace Systembolagskollen
     {
         private int _totalPages;
         private int _currentPage = 0;
-        private int _itemsPerPage = 100;
+        private int _itemsPerPage = 50;
         private int _amountOfArticles = 0;
         private Article Article;
         private SearchModel SearchModel;
+        private Beverage[] FilteredBeverages { get; set; }
 
         public MainForm()
         {
@@ -41,7 +41,6 @@ namespace Systembolagskollen
             var xmlLoader = new XmlLoader();
             SearchModel = new SearchModel();
             Article = xmlLoader.LoadArticleFromXml();
-            UpdateAmountOfArticles();
 
             if (Article == null)
                 return;
@@ -49,12 +48,14 @@ namespace Systembolagskollen
             SetDataSource();
             SetAlcoholTypes();
             RefreshDataSource();
-            tsLblAmountOfArticles.Text = $"Antal artiklar: {_amountOfArticles}";
+
+            UpdateAmountOfArticles();
         }
 
         void UpdateAmountOfArticles()
         {
-            _amountOfArticles = Article?.Beverages?.Count() ?? 0;
+            _amountOfArticles = FilteredBeverages?.Length ?? 0;
+            tsLblAmountOfArticles.Text = $"Antal artiklar: {_amountOfArticles}";
         }
 
         /// <summary>
@@ -75,18 +76,16 @@ namespace Systembolagskollen
         /// </summary>
         private void RefreshDataSource()
         {
-            var items = Article.GetBeveragesFiltered(Article.Beverages, SearchModel);
-            beverageDataSource.DataSource = items.Skip(_currentPage * _itemsPerPage).Take(_itemsPerPage);
+            FilteredBeverages = Article.GetBeveragesFiltered(Article.Beverages, SearchModel).ToArray();
+            beverageDataSource.DataSource = FilteredBeverages.Skip(_currentPage * _itemsPerPage).Take(_itemsPerPage);
             beverageGridView.Columns.Clear();
 
-            _totalPages = (int)Math.Ceiling(Convert.ToDecimal(items.Count()) / Convert.ToDecimal(_itemsPerPage));
+            _totalPages = (int)Math.Ceiling(Convert.ToDecimal(FilteredBeverages.Count()) / Convert.ToDecimal(_itemsPerPage));
+            lblPage.Text = $"Sida {_currentPage + 1}/{_totalPages}";
 
             beverageGridView.AllowUserToResizeRows = false;
             beverageGridView.AllowUserToResizeColumns = false;
             beverageGridView.AllowUserToOrderColumns = false;
-
-            //beverageGridView.Columns.Add("ArticleNumber", "Artikelnummer");
-            //beverageGridView.Columns["ArticleNumber"].DataPropertyName = "ArticleNumber";
 
             beverageGridView.Columns.Add("PartNumber", "Varunummer");
             beverageGridView.Columns["PartNumber"].DataPropertyName = "PartNumber";

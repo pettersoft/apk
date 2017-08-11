@@ -74,6 +74,7 @@
             this.txtArticleNumberFrom = new System.Windows.Forms.TextBox();
             this.lblArticleNumber = new System.Windows.Forms.Label();
             this.tsLblAmountOfArticles = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblPage = new System.Windows.Forms.Label();
             this.mainStatusStrip.SuspendLayout();
             this.gBoxData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.beverageGridView)).BeginInit();
@@ -121,6 +122,7 @@
             this.gBoxData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gBoxData.Controls.Add(this.lblPage);
             this.gBoxData.Controls.Add(this.btnUpdate);
             this.gBoxData.Controls.Add(this.btnOpen);
             this.gBoxData.Controls.Add(this.btnPrevious);
@@ -497,6 +499,15 @@
             this.tsLblAmountOfArticles.Size = new System.Drawing.Size(86, 17);
             this.tsLblAmountOfArticles.Text = "Antal artiklar: 0";
             // 
+            // lblPage
+            // 
+            this.lblPage.AutoSize = true;
+            this.lblPage.Location = new System.Drawing.Point(180, 480);
+            this.lblPage.Name = "lblPage";
+            this.lblPage.Size = new System.Drawing.Size(31, 13);
+            this.lblPage.TabIndex = 8;
+            this.lblPage.Text = "Sida ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -512,6 +523,7 @@
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
             this.gBoxData.ResumeLayout(false);
+            this.gBoxData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.beverageGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.beverageDataSource)).EndInit();
             this.gBoxFilter.ResumeLayout(false);
@@ -569,6 +581,7 @@
         private System.Windows.Forms.TextBox txtArticleNumberTo;
         private System.Windows.Forms.Label lblBytesReceived;
         private System.Windows.Forms.ToolStripStatusLabel tsLblAmountOfArticles;
+        private System.Windows.Forms.Label lblPage;
     }
 }
 
