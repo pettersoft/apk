@@ -38,7 +38,6 @@
             this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.omProgrammetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gBoxData = new System.Windows.Forms.GroupBox();
-            this.lblAmountOfArticles = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -46,6 +45,7 @@
             this.beverageGridView = new System.Windows.Forms.DataGridView();
             this.beverageDataSource = new System.Windows.Forms.BindingSource(this.components);
             this.gBoxFilter = new System.Windows.Forms.GroupBox();
+            this.lblBytesReceived = new System.Windows.Forms.Label();
             this.txtArticleNumberTo = new System.Windows.Forms.TextBox();
             this.cBoxAPK = new System.Windows.Forms.CheckBox();
             this.pgBarDownload = new System.Windows.Forms.ProgressBar();
@@ -73,7 +73,8 @@
             this.lblPrice = new System.Windows.Forms.Label();
             this.txtArticleNumberFrom = new System.Windows.Forms.TextBox();
             this.lblArticleNumber = new System.Windows.Forms.Label();
-            this.lblBytesReceived = new System.Windows.Forms.Label();
+            this.tsLblAmountOfArticles = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mainStatusStrip.SuspendLayout();
             this.gBoxData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.beverageGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beverageDataSource)).BeginInit();
@@ -83,6 +84,8 @@
             // 
             // mainStatusStrip
             // 
+            this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsLblAmountOfArticles});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 537);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(1086, 22);
@@ -118,7 +121,6 @@
             this.gBoxData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gBoxData.Controls.Add(this.lblAmountOfArticles);
             this.gBoxData.Controls.Add(this.btnUpdate);
             this.gBoxData.Controls.Add(this.btnOpen);
             this.gBoxData.Controls.Add(this.btnPrevious);
@@ -130,16 +132,6 @@
             this.gBoxData.TabIndex = 2;
             this.gBoxData.TabStop = false;
             this.gBoxData.Text = "Drycker";
-            // 
-            // lblAmountOfArticles
-            // 
-            this.lblAmountOfArticles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblAmountOfArticles.AutoSize = true;
-            this.lblAmountOfArticles.Location = new System.Drawing.Point(6, 479);
-            this.lblAmountOfArticles.Name = "lblAmountOfArticles";
-            this.lblAmountOfArticles.Size = new System.Drawing.Size(65, 13);
-            this.lblAmountOfArticles.TabIndex = 26;
-            this.lblAmountOfArticles.Text = "Antal artiklar";
             // 
             // btnUpdate
             // 
@@ -167,7 +159,7 @@
             // btnPrevious
             // 
             this.btnPrevious.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnPrevious.Location = new System.Drawing.Point(118, 475);
+            this.btnPrevious.Location = new System.Drawing.Point(18, 474);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(75, 23);
             this.btnPrevious.TabIndex = 5;
@@ -178,7 +170,7 @@
             // btnNext
             // 
             this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnNext.Location = new System.Drawing.Point(199, 475);
+            this.btnNext.Location = new System.Drawing.Point(99, 474);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 4;
@@ -199,7 +191,7 @@
             this.beverageGridView.Location = new System.Drawing.Point(18, 19);
             this.beverageGridView.Name = "beverageGridView";
             this.beverageGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.beverageGridView.Size = new System.Drawing.Size(660, 450);
+            this.beverageGridView.Size = new System.Drawing.Size(654, 450);
             this.beverageGridView.TabIndex = 3;
             this.beverageGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.beverageGridView_CellContentClick);
             this.beverageGridView.DoubleClick += new System.EventHandler(this.beverageGridView_DoubleClick);
@@ -242,6 +234,15 @@
             this.gBoxFilter.TabStop = false;
             this.gBoxFilter.Text = "Filtrera";
             this.gBoxFilter.Enter += new System.EventHandler(this.gBoxFilter_Enter);
+            // 
+            // lblBytesReceived
+            // 
+            this.lblBytesReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBytesReceived.AutoSize = true;
+            this.lblBytesReceived.Location = new System.Drawing.Point(194, 483);
+            this.lblBytesReceived.Name = "lblBytesReceived";
+            this.lblBytesReceived.Size = new System.Drawing.Size(0, 13);
+            this.lblBytesReceived.TabIndex = 26;
             // 
             // txtArticleNumberTo
             // 
@@ -490,14 +491,11 @@
             this.lblArticleNumber.TabIndex = 0;
             this.lblArticleNumber.Text = "Artikelnummer";
             // 
-            // lblBytesReceived
+            // tsLblAmountOfArticles
             // 
-            this.lblBytesReceived.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBytesReceived.AutoSize = true;
-            this.lblBytesReceived.Location = new System.Drawing.Point(194, 483);
-            this.lblBytesReceived.Name = "lblBytesReceived";
-            this.lblBytesReceived.Size = new System.Drawing.Size(0, 13);
-            this.lblBytesReceived.TabIndex = 26;
+            this.tsLblAmountOfArticles.Name = "tsLblAmountOfArticles";
+            this.tsLblAmountOfArticles.Size = new System.Drawing.Size(86, 17);
+            this.tsLblAmountOfArticles.Text = "Antal artiklar: 0";
             // 
             // MainForm
             // 
@@ -511,8 +509,9 @@
             this.Name = "MainForm";
             this.Text = "Systembolagskollen";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.mainStatusStrip.ResumeLayout(false);
+            this.mainStatusStrip.PerformLayout();
             this.gBoxData.ResumeLayout(false);
-            this.gBoxData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.beverageGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.beverageDataSource)).EndInit();
             this.gBoxFilter.ResumeLayout(false);
@@ -568,8 +567,8 @@
         private System.Windows.Forms.CheckBox cBoxAPK;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TextBox txtArticleNumberTo;
-        private System.Windows.Forms.Label lblAmountOfArticles;
         private System.Windows.Forms.Label lblBytesReceived;
+        private System.Windows.Forms.ToolStripStatusLabel tsLblAmountOfArticles;
     }
 }
 

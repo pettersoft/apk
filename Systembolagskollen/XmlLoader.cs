@@ -23,8 +23,8 @@ namespace Systembolagskollen
                         
                 var file = File.ReadAllText("sortiment.xml", Encoding.UTF8);
 
-                XmlSerializer serializer = new XmlSerializer(typeof(Article));
-                Article article = (Article)serializer.Deserialize(new StringReader(file));
+                var serializer = new XmlSerializer(typeof(Article));
+                var article = (Article)serializer.Deserialize(new StringReader(file));
 
                 return article;
             } catch (Exception e)
