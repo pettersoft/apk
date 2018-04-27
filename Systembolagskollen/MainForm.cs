@@ -81,7 +81,9 @@ namespace Systembolagskollen
 			beverageGridView.Columns.Clear();
 
 			_totalPages = (int)Math.Ceiling(Convert.ToDecimal(FilteredBeverages.Count()) / Convert.ToDecimal(_itemsPerPage));
-			lblPage.Text = $"Sida {_currentPage + 1}/{_totalPages}";
+			txtPage.Text = $"{_currentPage + 1}";
+			tsLblPages.Visible = true;
+			tsLblPages.Text = $"Sida {_currentPage + 1}/{_totalPages}";
 
 			beverageGridView.AllowUserToResizeRows = false;
 			beverageGridView.AllowUserToResizeColumns = false;
@@ -347,5 +349,22 @@ namespace Systembolagskollen
 				btnOpen.Enabled = true;
 		}
 
+		private void txtPage_Leave(object sender, EventArgs e)
+		{
+			SetPage();
+		}
+
+		void SetPage()
+		{
+			if (!int.TryParse(txtPage.Text, out var page))
+			{
+				AlertHelper.AlertHelper.Alert($"Kunde ej läsa {txtPage.Text} som siffra");
+				return;
+			}
+
+			// -1 eftersom vi har lurat användaren
+			_currentPage = page - 1;
+			RefreshDataSource();
+		}
 	}
 }
