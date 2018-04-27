@@ -87,12 +87,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBeverageInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutBeverageInformation.Designer.cs">
-      <DependentUpon>AboutBeverageInformation.cs</DependentUpon>
-    </Compile>
     <Compile Include="BeverageInformation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,9 +113,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="XmlLoader.cs" />
-    <EmbeddedResource Include="AboutBeverageInformation.resx">
-      <DependentUpon>AboutBeverageInformation.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BeverageInformation.resx">
       <DependentUpon>BeverageInformation.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,5 +15,7 @@
         public string AlcoholType { get; set; }
         public bool SortByAPK { get; set; }
 		public bool SortByArticleNumber { get; set; }
+		public decimal? VolumeFrom { get; set; }
+		public decimal? VolumeTo { get; set; }
     }
 }

@@ -55,12 +55,18 @@ namespace Systembolaget.DataObjects
 			if (searchModel.AlcoholTo.HasValue && searchModel.AlcoholTo.Value != 0)
 				tempData = tempData.Where(x => ConvertStringAlcoholToDecimal(x.Alcohol) <= searchModel.AlcoholTo.Value);
 
+			if (searchModel.VolumeFrom.HasValue && searchModel.VolumeFrom.Value != 0)
+				tempData = tempData.Where(x => x.VolumeInMl >= searchModel.VolumeFrom.Value);
+
+			if (searchModel.VolumeTo.HasValue && searchModel.VolumeTo.Value != 0)
+				tempData = tempData.Where(x => x.VolumeInMl <= searchModel.VolumeTo.Value);
+
 			if (!string.IsNullOrEmpty(searchModel.AlcoholType))
 				tempData = tempData.Where(x => x.Department == searchModel.AlcoholType);
 
 			//if (searchModel.SortByAPK)
 			//	tempData = tempData.OrderByDescending(b => b.APK);
-			IOrderedEnumerable<Beverage> order = tempData.OrderBy(a => 1);
+			var order = tempData.OrderBy(a => 1);
 
 			if (searchModel.SortByAPK)
 				order = tempData.OrderByDescending(b => b.APK);

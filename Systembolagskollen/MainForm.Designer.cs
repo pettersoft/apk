@@ -78,6 +78,9 @@
 			this.lblPrice = new System.Windows.Forms.Label();
 			this.txtArticleNumberFrom = new System.Windows.Forms.TextBox();
 			this.lblArticleNumber = new System.Windows.Forms.Label();
+			this.lblVolume = new System.Windows.Forms.Label();
+			this.txtVolumeFrom = new System.Windows.Forms.TextBox();
+			this.txtVolumeTo = new System.Windows.Forms.TextBox();
 			this.mainStatusStrip.SuspendLayout();
 			this.gBoxData.SuspendLayout();
 			this.pnlPagination.SuspendLayout();
@@ -238,6 +241,9 @@
 			// 
 			this.gBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gBoxFilter.Controls.Add(this.txtVolumeTo);
+			this.gBoxFilter.Controls.Add(this.txtVolumeFrom);
+			this.gBoxFilter.Controls.Add(this.lblVolume);
 			this.gBoxFilter.Controls.Add(this.cBoxSortByArticleNumber);
 			this.gBoxFilter.Controls.Add(this.lblBytesReceived);
 			this.gBoxFilter.Controls.Add(this.txtArticleNumberTo);
@@ -277,7 +283,7 @@
 			// cBoxSortByArticleNumber
 			// 
 			this.cBoxSortByArticleNumber.AutoSize = true;
-			this.cBoxSortByArticleNumber.Location = new System.Drawing.Point(196, 199);
+			this.cBoxSortByArticleNumber.Location = new System.Drawing.Point(196, 226);
 			this.cBoxSortByArticleNumber.Name = "cBoxSortByArticleNumber";
 			this.cBoxSortByArticleNumber.Size = new System.Drawing.Size(152, 17);
 			this.cBoxSortByArticleNumber.TabIndex = 27;
@@ -304,7 +310,7 @@
 			// cBoxAPK
 			// 
 			this.cBoxAPK.AutoSize = true;
-			this.cBoxAPK.Location = new System.Drawing.Point(89, 199);
+			this.cBoxAPK.Location = new System.Drawing.Point(89, 226);
 			this.cBoxAPK.Name = "cBoxAPK";
 			this.cBoxAPK.Size = new System.Drawing.Size(111, 17);
 			this.cBoxAPK.TabIndex = 24;
@@ -357,7 +363,7 @@
 			// lblType
 			// 
 			this.lblType.AutoSize = true;
-			this.lblType.Location = new System.Drawing.Point(6, 174);
+			this.lblType.Location = new System.Drawing.Point(6, 201);
 			this.lblType.Name = "lblType";
 			this.lblType.Size = new System.Drawing.Size(25, 13);
 			this.lblType.TabIndex = 20;
@@ -366,7 +372,7 @@
 			// lblPercentage
 			// 
 			this.lblPercentage.AutoSize = true;
-			this.lblPercentage.Location = new System.Drawing.Point(317, 145);
+			this.lblPercentage.Location = new System.Drawing.Point(317, 172);
 			this.lblPercentage.Name = "lblPercentage";
 			this.lblPercentage.Size = new System.Drawing.Size(15, 13);
 			this.lblPercentage.TabIndex = 19;
@@ -375,7 +381,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(200, 145);
+			this.label2.Location = new System.Drawing.Point(200, 172);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(10, 13);
 			this.label2.TabIndex = 18;
@@ -383,7 +389,7 @@
 			// 
 			// txtAlcoholTo
 			// 
-			this.txtAlcoholTo.Location = new System.Drawing.Point(237, 142);
+			this.txtAlcoholTo.Location = new System.Drawing.Point(237, 169);
 			this.txtAlcoholTo.Name = "txtAlcoholTo";
 			this.txtAlcoholTo.Size = new System.Drawing.Size(64, 20);
 			this.txtAlcoholTo.TabIndex = 17;
@@ -391,7 +397,7 @@
 			// 
 			// txtAlcoholFrom
 			// 
-			this.txtAlcoholFrom.Location = new System.Drawing.Point(111, 142);
+			this.txtAlcoholFrom.Location = new System.Drawing.Point(111, 169);
 			this.txtAlcoholFrom.Name = "txtAlcoholFrom";
 			this.txtAlcoholFrom.Size = new System.Drawing.Size(64, 20);
 			this.txtAlcoholFrom.TabIndex = 16;
@@ -400,7 +406,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(8, 145);
+			this.label3.Location = new System.Drawing.Point(8, 172);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(59, 13);
 			this.label3.TabIndex = 15;
@@ -410,14 +416,14 @@
 			// 
 			this.cBoxTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cBoxTypes.FormattingEnabled = true;
-			this.cBoxTypes.Location = new System.Drawing.Point(87, 171);
+			this.cBoxTypes.Location = new System.Drawing.Point(87, 198);
 			this.cBoxTypes.Name = "cBoxTypes";
 			this.cBoxTypes.Size = new System.Drawing.Size(290, 21);
 			this.cBoxTypes.TabIndex = 14;
 			// 
 			// btnClear
 			// 
-			this.btnClear.Location = new System.Drawing.Point(135, 222);
+			this.btnClear.Location = new System.Drawing.Point(135, 249);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(75, 56);
 			this.btnClear.TabIndex = 13;
@@ -427,7 +433,7 @@
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Location = new System.Drawing.Point(236, 222);
+			this.btnSearch.Location = new System.Drawing.Point(236, 249);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 56);
 			this.btnSearch.TabIndex = 12;
@@ -438,7 +444,7 @@
 			// lblName
 			// 
 			this.lblName.AutoSize = true;
-			this.lblName.Location = new System.Drawing.Point(8, 117);
+			this.lblName.Location = new System.Drawing.Point(8, 144);
 			this.lblName.Name = "lblName";
 			this.lblName.Size = new System.Drawing.Size(35, 13);
 			this.lblName.TabIndex = 11;
@@ -446,7 +452,7 @@
 			// 
 			// txtName
 			// 
-			this.txtName.Location = new System.Drawing.Point(87, 114);
+			this.txtName.Location = new System.Drawing.Point(87, 141);
 			this.txtName.Name = "txtName";
 			this.txtName.Size = new System.Drawing.Size(290, 20);
 			this.txtName.TabIndex = 10;
@@ -540,6 +546,29 @@
 			this.lblArticleNumber.TabIndex = 0;
 			this.lblArticleNumber.Text = "Artikelnummer";
 			// 
+			// lblVolume
+			// 
+			this.lblVolume.AutoSize = true;
+			this.lblVolume.Location = new System.Drawing.Point(11, 103);
+			this.lblVolume.Name = "lblVolume";
+			this.lblVolume.Size = new System.Drawing.Size(35, 13);
+			this.lblVolume.TabIndex = 28;
+			this.lblVolume.Text = "Volym";
+			// 
+			// txtVolumeFrom
+			// 
+			this.txtVolumeFrom.Location = new System.Drawing.Point(111, 104);
+			this.txtVolumeFrom.Name = "txtVolumeFrom";
+			this.txtVolumeFrom.Size = new System.Drawing.Size(64, 20);
+			this.txtVolumeFrom.TabIndex = 29;
+			// 
+			// txtVolumeTo
+			// 
+			this.txtVolumeTo.Location = new System.Drawing.Point(237, 104);
+			this.txtVolumeTo.Name = "txtVolumeTo";
+			this.txtVolumeTo.Size = new System.Drawing.Size(64, 20);
+			this.txtVolumeTo.TabIndex = 30;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -618,6 +647,9 @@
 		private System.Windows.Forms.TextBox txtPage;
 		private System.Windows.Forms.ToolStripStatusLabel tsLblPages;
 		private System.Windows.Forms.Panel pnlPagination;
+		private System.Windows.Forms.Label lblVolume;
+		private System.Windows.Forms.TextBox txtVolumeTo;
+		private System.Windows.Forms.TextBox txtVolumeFrom;
 	}
 }
 

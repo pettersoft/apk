@@ -52,7 +52,7 @@ namespace Systembolagskollen
 			UpdateAmountOfArticles();
 		}
 
-		void UpdateAmountOfArticles()
+		private void UpdateAmountOfArticles()
 		{
 			_amountOfArticles = FilteredBeverages?.Length ?? 0;
 			tsLblAmountOfArticles.Text = $"Antal artiklar: {_amountOfArticles}";
@@ -136,12 +136,7 @@ namespace Systembolagskollen
 
 			beverageGridView.DataSource = beverageDataSource;
 		}
-
-		private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.Dispose();
-		}
-
+		
 		private void btnNext_Click(object sender, EventArgs e)
 		{
 			SetPage(true);
@@ -210,7 +205,9 @@ namespace Systembolagskollen
 			txtAlcoholTo.Text = (0m).ToString();
 			cBoxTypes.SelectedIndex = 0;
 			cBoxSortByArticleNumber.Checked = false;
-		}
+			txtVolumeFrom.Text = (0m).ToString();
+			txtVolumeTo.Text = (0m).ToString();
+				}
 
 		/// <summary>
 		/// Sätter om sökmodellen beroende på värden som angivits
@@ -233,6 +230,8 @@ namespace Systembolagskollen
 				SearchModel.AlcoholTo = Convert.ToDecimal(txtAlcoholTo.Text);
 				SearchModel.SortByAPK = cBoxAPK.Checked;
 				SearchModel.SortByArticleNumber = cBoxSortByArticleNumber.Checked;
+				SearchModel.VolumeFrom = Convert.ToDecimal(txtVolumeFrom.Text);
+				SearchModel.VolumeTo = Convert.ToDecimal(txtVolumeTo.Text);
 
 				if (cBoxTypes.SelectedIndex > 0)
 					SearchModel.AlcoholType = cBoxTypes.SelectedItem.ToString();
@@ -299,17 +298,6 @@ namespace Systembolagskollen
 			beverageInformation.ShowDialog();
 		}
 
-		/// <summary>
-		/// Klick event för om programmet
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void omProgrammetToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			var aboutBox = new AboutBeverageInformation();
-			aboutBox.ShowDialog();
-		}
-
 		private void WebClient_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
 		{
 			pgBarDownload.Style = ProgressBarStyle.Blocks;
@@ -342,7 +330,7 @@ namespace Systembolagskollen
 			SetStateForOpenButton();
 		}
 
-		void SetStateForOpenButton()
+		private void SetStateForOpenButton()
 		{
 			btnOpen.Enabled = false;
 			if (beverageGridView.SelectedRows.Count > 0)
@@ -350,11 +338,6 @@ namespace Systembolagskollen
 		}
 
 		private void txtPage_Leave(object sender, EventArgs e)
-		{
-			SetPage();
-		}
-
-		void SetPage()
 		{
 			if (!int.TryParse(txtPage.Text, out var page))
 			{
