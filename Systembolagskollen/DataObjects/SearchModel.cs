@@ -14,5 +14,6 @@
         public decimal? AlcoholTo { get; set; }
         public string AlcoholType { get; set; }
         public bool SortByAPK { get; set; }
+		public bool SortByArticleNumber { get; set; }
     }
 }

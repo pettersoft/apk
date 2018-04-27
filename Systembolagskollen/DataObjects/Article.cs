@@ -9,87 +9,94 @@ using Systembolagskollen.Helpers;
 
 namespace Systembolaget.DataObjects
 {
-    [Serializable, XmlRoot("artiklar")]
-    public class Article
-    {
-        [XmlElement(ElementName = "skapad-tid")]
-        public string CreatedAt { get; set; }
+	[Serializable, XmlRoot("artiklar")]
+	public class Article
+	{
+		[XmlElement(ElementName = "skapad-tid")]
+		public string CreatedAt { get; set; }
 
-        [XmlElement(ElementName = "info")]
-        public Extra Extra { get; set; }
+		[XmlElement(ElementName = "info")]
+		public Extra Extra { get; set; }
 
-        [XmlElement(ElementName = "artikel")]
-        public Beverage[] Beverages { get; set; }
+		[XmlElement(ElementName = "artikel")]
+		public Beverage[] Beverages { get; set; }
 
-        public IEnumerable<Beverage> GetBeveragesFiltered(Beverage[] data, SearchModel searchModel)
-        {
-            var tempData = data.ToList();
+		public IEnumerable<Beverage> GetBeveragesFiltered(IEnumerable<Beverage> data, SearchModel searchModel)
+		{
+			var tempData = data;
 
-            if (!string.IsNullOrEmpty(searchModel.ArticleNumberFrom))
-                tempData = tempData.Where(c => c.ArticleNumber.ToLower().StartsWith(searchModel.ArticleNumberFrom.ToLower())).ToList();
+			if (!string.IsNullOrEmpty(searchModel.ArticleNumberFrom))
+				tempData = tempData.Where(c => c.ArticleNumber.ToLower().StartsWith(searchModel.ArticleNumberFrom.ToLower()));
 
-            if (!string.IsNullOrEmpty(searchModel.ArticleNumberTo))
-                tempData = tempData.Where(c => c.ArticleNumber.ToLower().EndsWith(searchModel.ArticleNumberTo.ToLower())).ToList();
+			if (!string.IsNullOrEmpty(searchModel.ArticleNumberTo))
+				tempData = tempData.Where(c => c.ArticleNumber.ToLower().EndsWith(searchModel.ArticleNumberTo.ToLower()));
 
-            if (!string.IsNullOrEmpty(searchModel.Name))
-                tempData = tempData.Where(x => x.Name.ToLower().Contains(searchModel.Name.ToLower())).ToList();
+			if (!string.IsNullOrEmpty(searchModel.Name))
+				tempData = tempData.Where(x => x.Name.ToLower().Contains(searchModel.Name.ToLower()));
 
-            if (searchModel.Koscher.HasValue)
-                tempData = tempData.Where(x => IsValue1(x.Koscher) == searchModel.Koscher.Value).ToList();
+			if (searchModel.Koscher.HasValue)
+				tempData = tempData.Where(x => IsValue1(x.Koscher) == searchModel.Koscher.Value);
 
-            if (searchModel.Ethical.HasValue)
-                tempData = tempData.Where(x => IsValue1(x.Ethical) == searchModel.Ethical.Value).ToList();
+			if (searchModel.Ethical.HasValue)
+				tempData = tempData.Where(x => IsValue1(x.Ethical) == searchModel.Ethical.Value);
 
-            if (searchModel.Ecologic.HasValue)
-                tempData = tempData.Where(x => IsValue1(x.Ecologic) == searchModel.Ecologic.Value).ToList();
+			if (searchModel.Ecologic.HasValue)
+				tempData = tempData.Where(x => IsValue1(x.Ecologic) == searchModel.Ecologic.Value);
 
-            if (searchModel.PriceFrom.HasValue && searchModel.PriceFrom.Value != 0)
-                tempData = tempData.Where(x => x.PriceIncludingVat >= searchModel.PriceFrom.Value).ToList();
+			if (searchModel.PriceFrom.HasValue && searchModel.PriceFrom.Value != 0)
+				tempData = tempData.Where(x => x.PriceIncludingVat >= searchModel.PriceFrom.Value);
 
-            if (searchModel.PriceTo.HasValue && searchModel.PriceTo.Value != 0)
-                tempData = tempData.Where(x => x.PriceIncludingVat <= searchModel.PriceTo.Value).ToList();
+			if (searchModel.PriceTo.HasValue && searchModel.PriceTo.Value != 0)
+				tempData = tempData.Where(x => x.PriceIncludingVat <= searchModel.PriceTo.Value);
 
-            if (searchModel.AlcoholFrom.HasValue && searchModel.AlcoholFrom.Value != 0)
-                tempData = tempData.Where(x => ConvertStringAlcoholToDecimal(x.Alcohol) >= searchModel.AlcoholFrom.Value).ToList();
+			if (searchModel.AlcoholFrom.HasValue && searchModel.AlcoholFrom.Value != 0)
+				tempData = tempData.Where(x => ConvertStringAlcoholToDecimal(x.Alcohol) >= searchModel.AlcoholFrom.Value);
 
-            if (searchModel.AlcoholTo.HasValue && searchModel.AlcoholTo.Value != 0)
-                tempData = tempData.Where(x => ConvertStringAlcoholToDecimal(x.Alcohol) <= searchModel.AlcoholTo.Value).ToList();
+			if (searchModel.AlcoholTo.HasValue && searchModel.AlcoholTo.Value != 0)
+				tempData = tempData.Where(x => ConvertStringAlcoholToDecimal(x.Alcohol) <= searchModel.AlcoholTo.Value);
 
-            if (!string.IsNullOrEmpty(searchModel.AlcoholType))
-                tempData = tempData.Where(x => x.Department == searchModel.AlcoholType).ToList();
+			if (!string.IsNullOrEmpty(searchModel.AlcoholType))
+				tempData = tempData.Where(x => x.Department == searchModel.AlcoholType);
 
-            if (searchModel.SortByAPK)
-                tempData = tempData.OrderByDescending(c => c.APK).ToList();
+			//if (searchModel.SortByAPK)
+			//	tempData = tempData.OrderByDescending(b => b.APK);
+			IOrderedEnumerable<Beverage> order = tempData.OrderBy(a => 1);
 
-            return tempData;
-        }
+			if (searchModel.SortByAPK)
+				order = tempData.OrderByDescending(b => b.APK);
 
-        public string[] DrinkTypes(Beverage[] data)
-        {
-            var drinkTypes = data.Select(x => x.Department);
-            var types = drinkTypes.Distinct();
+			if (searchModel.SortByArticleNumber)
+				order.ThenBy(b => Convert.ToInt32(b.ArticleNumber));
 
-            return types.OrderBy(c => c).ToArray();
-        }
+			return order.ToList();
+		}
 
-        public bool IsValue1(string s)
-        {
-            return s == "1";
-        }
+		public string[] DrinkTypes(Beverage[] data)
+		{
+			var drinkTypes = data.Select(x => x.Department);
+			var types = drinkTypes.Distinct();
 
-        public decimal ConvertStringAlcoholToDecimal(string s)
-        {
-            s = s.Remove(s.Length-1, 1);
-            if (s.Contains("."))
-                s = s.Replace(".", ",");
-            return Convert.ToDecimal(s);
-        }
-    }
+			return types.OrderBy(c => c).ToArray();
+		}
 
-    [Serializable]
-    public class Extra
-    {
-        [XmlElement(ElementName = "meddelande")]
-        public string Message { get; set; }
-    }
+		public bool IsValue1(string s)
+		{
+			return s == "1";
+		}
+
+		public decimal ConvertStringAlcoholToDecimal(string s)
+		{
+			s = s.Remove(s.Length - 1, 1);
+			if (s.Contains("."))
+				s = s.Replace(".", ",");
+			return Convert.ToDecimal(s);
+		}
+	}
+
+	[Serializable]
+	public class Extra
+	{
+		[XmlElement(ElementName = "meddelande")]
+		public string Message { get; set; }
+	}
 }
