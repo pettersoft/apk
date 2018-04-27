@@ -198,7 +198,7 @@
 			this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnUpdate.Location = new System.Drawing.Point(485, 474);
 			this.btnUpdate.Name = "btnUpdate";
-			this.btnUpdate.Size = new System.Drawing.Size(75, 20);
+			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
 			this.btnUpdate.TabIndex = 7;
 			this.btnUpdate.Text = "Uppdatera";
 			this.btnUpdate.UseVisualStyleBackColor = true;
@@ -210,7 +210,7 @@
 			this.btnOpen.Enabled = false;
 			this.btnOpen.Location = new System.Drawing.Point(566, 474);
 			this.btnOpen.Name = "btnOpen";
-			this.btnOpen.Size = new System.Drawing.Size(100, 20);
+			this.btnOpen.Size = new System.Drawing.Size(100, 23);
 			this.btnOpen.TabIndex = 6;
 			this.btnOpen.Text = "Öppna artikel";
 			this.btnOpen.UseVisualStyleBackColor = true;
@@ -348,7 +348,7 @@
 			this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnClose.Location = new System.Drawing.Point(302, 478);
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(75, 20);
+			this.btnClose.Size = new System.Drawing.Size(75, 23);
 			this.btnClose.TabIndex = 21;
 			this.btnClose.Text = "Stäng";
 			this.btnClose.UseVisualStyleBackColor = true;
