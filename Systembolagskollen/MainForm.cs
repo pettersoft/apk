@@ -241,7 +241,7 @@ namespace Systembolagskollen
 			}
 			catch (Exception e)
 			{
-				AlertHelper.AlertHelper.Alert("Någonting gick snett, " + e.Message);
+				MessageBox.Show("Någonting gick snett, " + e.Message);
 			}
 		}
 
@@ -341,7 +341,7 @@ namespace Systembolagskollen
 		{
 			if (!int.TryParse(txtPage.Text, out var page))
 			{
-				AlertHelper.AlertHelper.Alert($"Kunde ej läsa {txtPage.Text} som siffra");
+				MessageBox.Show($"Kunde ej läsa {txtPage.Text} som siffra");
 				return;
 			}
 

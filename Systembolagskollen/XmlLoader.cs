@@ -3,6 +3,7 @@ using System.IO;
 using System.Xml.Serialization;
 using Systembolaget.DataObjects;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Systembolagskollen
 {
@@ -17,7 +18,7 @@ namespace Systembolagskollen
             try {
                 if (!File.Exists("sortiment.xml"))
                 {
-                    AlertHelper.AlertHelper.Alert("Ingen sortimentfil finns nedladdad. Vänligen ladda ned en sortimentfil genom att gå in på Arkiv > Uppdatera.");
+					MessageBox.Show("Ingen sortimentfil finns nedladdad. Vänligen ladda ned en sortimentfil genom att gå in på Arkiv > Uppdatera.");
                     return null;
                 }
                         
@@ -33,7 +34,7 @@ namespace Systembolagskollen
 
                 if (errorInformation.Source.ToLower() == "system.xml")
                 {
-                    AlertHelper.AlertHelper.Alert("Ett fel uppstod vid läsning av XML-filen. Uppdatera sortimentet för att låsa problemet.");
+					MessageBox.Show("Ett fel uppstod vid läsning av XML-filen. Uppdatera sortimentet för att låsa problemet.");
                     File.Delete("sortiment.xml");
                 }
 
