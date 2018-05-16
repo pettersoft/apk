@@ -50,6 +50,7 @@ namespace Systembolagskollen
 			RefreshDataSource();
 
 			UpdateAmountOfArticles();
+			tsLblFileCreatedAt.Text = $"Sortimentfil från: {Article.CreatedAt}";
 		}
 
 		private void UpdateAmountOfArticles()
@@ -136,7 +137,7 @@ namespace Systembolagskollen
 
 			beverageGridView.DataSource = beverageDataSource;
 		}
-		
+
 		private void btnNext_Click(object sender, EventArgs e)
 		{
 			SetPage(true);
@@ -207,7 +208,7 @@ namespace Systembolagskollen
 			cBoxSortByArticleNumber.Checked = false;
 			txtVolumeFrom.Text = (0m).ToString();
 			txtVolumeTo.Text = (0m).ToString();
-				}
+		}
 
 		/// <summary>
 		/// Sätter om sökmodellen beroende på värden som angivits
@@ -305,7 +306,6 @@ namespace Systembolagskollen
 			pgBarDownload.PerformStep();
 			Reload();
 		}
-
 
 		private void DownloadProgressCallback(Object sender, DownloadProgressChangedEventArgs e)
 		{

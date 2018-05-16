@@ -9,6 +9,11 @@ using Systembolagskollen.Helpers;
 
 namespace Systembolaget.DataObjects
 {
+	/// <summary>
+	/// Article är basklassen som Systembolaget använder
+	/// Den innehåller datum som den skapades, lite extra information och alla drycker
+	/// Se <see cref="Beverage"/> för dryck
+	/// </summary>
 	[Serializable, XmlRoot("artiklar")]
 	public class Article
 	{

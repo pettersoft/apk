@@ -81,6 +81,7 @@
 			this.lblVolume = new System.Windows.Forms.Label();
 			this.txtVolumeFrom = new System.Windows.Forms.TextBox();
 			this.txtVolumeTo = new System.Windows.Forms.TextBox();
+			this.tsLblFileCreatedAt = new System.Windows.Forms.ToolStripStatusLabel();
 			this.mainStatusStrip.SuspendLayout();
 			this.gBoxData.SuspendLayout();
 			this.pnlPagination.SuspendLayout();
@@ -94,7 +95,8 @@
 			// 
 			this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsLblAmountOfArticles,
-            this.tsLblPages});
+            this.tsLblPages,
+            this.tsLblFileCreatedAt});
 			this.mainStatusStrip.Location = new System.Drawing.Point(0, 537);
 			this.mainStatusStrip.Name = "mainStatusStrip";
 			this.mainStatusStrip.Size = new System.Drawing.Size(1086, 22);
@@ -569,6 +571,11 @@
 			this.txtVolumeTo.Size = new System.Drawing.Size(64, 20);
 			this.txtVolumeTo.TabIndex = 30;
 			// 
+			// tsLblFileCreatedAt
+			// 
+			this.tsLblFileCreatedAt.Name = "tsLblFileCreatedAt";
+			this.tsLblFileCreatedAt.Size = new System.Drawing.Size(0, 17);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -650,6 +657,7 @@
 		private System.Windows.Forms.Label lblVolume;
 		private System.Windows.Forms.TextBox txtVolumeTo;
 		private System.Windows.Forms.TextBox txtVolumeFrom;
+		private System.Windows.Forms.ToolStripStatusLabel tsLblFileCreatedAt;
 	}
 }
 
