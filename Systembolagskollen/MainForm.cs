@@ -231,8 +231,8 @@ namespace Systembolagskollen
 				SearchModel.AlcoholTo = Convert.ToDecimal(txtAlcoholTo.Text);
 				SearchModel.SortByAPK = cBoxAPK.Checked;
 				SearchModel.SortByArticleNumber = cBoxSortByArticleNumber.Checked;
-				SearchModel.VolumeFrom = Convert.ToDecimal(txtVolumeFrom.Text);
-				SearchModel.VolumeTo = Convert.ToDecimal(txtVolumeTo.Text);
+				SearchModel.VolumeFrom = Convert.ToDecimal(string.IsNullOrEmpty(txtVolumeFrom.Text) ? "0" : txtVolumeFrom.Text);
+				SearchModel.VolumeTo = Convert.ToDecimal(string.IsNullOrEmpty(txtVolumeTo.Text) ? "0" : txtVolumeTo.Text);
 
 				if (cBoxTypes.SelectedIndex > 0)
 					SearchModel.AlcoholType = cBoxTypes.SelectedItem.ToString();

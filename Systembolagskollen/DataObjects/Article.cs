@@ -85,7 +85,7 @@ namespace Systembolaget.DataObjects
 		public string[] DrinkTypes(Beverage[] data)
 		{
 			var drinkTypes = data.Select(x => x.Department);
-			var types = drinkTypes.Distinct();
+			var types = drinkTypes.Distinct().Where(x => !string.IsNullOrEmpty(x));
 
 			return types.OrderBy(c => c).ToArray();
 		}
