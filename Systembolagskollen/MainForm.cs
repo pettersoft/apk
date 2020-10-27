@@ -315,7 +315,7 @@ namespace Systembolagskollen
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			var webClient = new WebClient();
-			var uri = new Uri("https://www.systembolaget.se/api/assortment/products/xml");
+			var uri = new Uri("https://old.systembolaget.se/api/assortment/products/xml");
 
 			pgBarDownload.Visible = true;
 			pgBarDownload.Style = ProgressBarStyle.Marquee;
