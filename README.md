@@ -1,3 +1,7 @@
+# Programmet har slutat fungera sedan Februari 2021 då Systembolaget har stängt ned sina gamla API:er.
+
+Det finns inga planer på att migrera till de nya API:erna.
+
 # apk
 Alkohol per krona
 
